@@ -92,5 +92,17 @@ namespace ReaderTests
          Assert.IsNotNull(arabicBible);
       }
 
+      [TestMethod]
+      public void WorkingText_ReadsAVerse_Arabic_ReadExodus2_3_ByGetVerse_IsCorrect()
+      {
+         preliminaries();
+         String verseText = this.arabicBible
+            .GetVerse("اَلْخُرُوجُ", 2, 3).ToString();
+         Assert.IsTrue(
+            verseText.Contains
+            ("أَخَذَتْ لَهُ سَفَطًا مِنَ ٱلْبَرْدِيِّ وَطَلَتْهُ")
+            );
+      }
+
    }
 }
