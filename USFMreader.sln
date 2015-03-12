@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USFMreader", "USFMreader\USFMreader.csproj", "{702DC0A3-240F-4DD9-B485-BF9E0B194013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderTests", "ReaderTests\ReaderTests.csproj", "{43AAA307-7712-4D55-A977-72D718640E66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{702DC0A3-240F-4DD9-B485-BF9E0B194013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{702DC0A3-240F-4DD9-B485-BF9E0B194013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{702DC0A3-240F-4DD9-B485-BF9E0B194013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{702DC0A3-240F-4DD9-B485-BF9E0B194013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43AAA307-7712-4D55-A977-72D718640E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43AAA307-7712-4D55-A977-72D718640E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43AAA307-7712-4D55-A977-72D718640E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43AAA307-7712-4D55-A977-72D718640E66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
