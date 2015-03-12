@@ -86,6 +86,18 @@ namespace ReaderTests
       }
 
       [TestMethod]
+      public void WorkingText_ReadsFinalVerseOfOneChapterBook_EnglishLiteral_ReadJude1_25_ByGetVerse_IsCorrect()
+      {
+         preliminaries();
+         String verseText = englishBibleLiteralTranslation
+            .GetVerse("Jude", 1, 25).ToString();
+         Assert.IsTrue(
+            verseText.Contains
+            ("glory, majesty, dominion and power")
+            );
+      }
+
+      [TestMethod]
       public void WorkingText_Arabic_IsNotNull()
       {
          preliminaries();
