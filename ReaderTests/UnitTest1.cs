@@ -62,6 +62,30 @@ namespace ReaderTests
       }
 
       [TestMethod]
+      public void WorkingText_ReadsFinalChapter_EnglishLiteral_ReadLuke24_6_ByGetVerse_IsCorrect()
+      {
+         preliminaries();
+         String verseText = englishBibleLiteralTranslation
+            .GetVerse("Luke", 24, 6).ToString();
+         Assert.IsTrue(
+            verseText.Contains
+            ("He is not here, but is risen!")
+            );
+      }
+
+      [TestMethod]
+      public void WorkingText_ReadsFinalVerse_EnglishLiteral_ReadGenesis50_26_ByGetVerse_IsCorrect()
+      {
+         preliminaries();
+         String verseText = englishBibleLiteralTranslation
+            .GetVerse("Genesis", 50, 26).ToString();
+         Assert.IsTrue(
+            verseText.Contains
+            ("So Joseph died, one hundred ten years old.")
+            );
+      }
+
+      [TestMethod]
       public void WorkingText_Arabic_IsNotNull()
       {
          preliminaries();

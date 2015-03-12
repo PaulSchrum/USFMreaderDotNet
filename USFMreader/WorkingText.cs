@@ -168,5 +168,13 @@ namespace USFMreader
             .Where(bk => bk.Value.TOC2.Equals(name))
             .FirstOrDefault().Value;
       }
+
+      public Verse GetVerse(string bookName, int chapterNumber, int verseNumber)
+      {
+         Book book = this.GetBookByName(bookName);
+         Chapter chapter = book.GetChapterByNumber(chapterNumber);
+         Verse verse = chapter.GetVerseByNumber(verseNumber);
+         return verse;
+      }
    }
 }

@@ -101,6 +101,7 @@ namespace USFMreader
                   throw new Exception("Unexpected loadState value.");
                }
             }
+            this.AllChapters.Add(this.chapterCount, this.pendingChapter);
          }
       }
 
