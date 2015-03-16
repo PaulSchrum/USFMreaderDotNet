@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using USFMreader;
 using System.Text;
 using System.IO;
+using USFMreader;
+using USFMreader.GeneralizedFileSystem;
 
 namespace ReaderTests
 {
@@ -114,6 +115,13 @@ namespace ReaderTests
             verseText.Contains
             ("أَخَذَتْ لَهُ سَفَطًا مِنَ ٱلْبَرْدِيِّ وَطَلَتْهُ")
             );
+      }
+
+      //[TestMethod]
+      public void WebPoller_GetTopDirectory_returnCorrect()
+      {
+         WebPoller poller = new WebPoller();
+         poller.CrawlUnfoldingWordForUpdates();
       }
 
    }

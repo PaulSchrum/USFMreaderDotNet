@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="Chapter.cs" />
+    <Compile Include="GeneralizedFileSystem\DirectoryItem.cs" />
+    <Compile Include="GeneralizedFileSystem\FileItem.cs" />
+    <Compile Include="GeneralizedFileSystem\FileSystemItem.cs" />
+    <Compile Include="GeneralizedFileSystem\RootDirectory.cs" />
     <Compile Include="ITextContainer.cs" />
     <Compile Include="Reader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +56,7 @@
     <Compile Include="TranslationStatus.cs" />
     <Compile Include="Verse.cs" />
     <Compile Include="VerseNumberRange.cs" />
+    <Compile Include="GeneralizedFileSystem\WebPoller.cs" />
     <Compile Include="WorkingText.cs" />
   </ItemGroup>
   <ItemGroup>
