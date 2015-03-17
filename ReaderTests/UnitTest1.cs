@@ -117,7 +117,7 @@ namespace ReaderTests
             );
       }
 
-      //[TestMethod]
+      [TestMethod]
       public void WebPoller_GetTopDirectory_returnCorrect()
       {
          WebPoller poller = new WebPoller();

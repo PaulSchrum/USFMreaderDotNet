@@ -22,7 +22,7 @@ namespace USFMreader.GeneralizedFileSystem
       {
          baseURL = "https://api.unfoldingword.org/";
          testURL = "https://api.unfoldingword.org/avd/txt/1/avd-ar/";
-         root = RootDirectory.CreateInstance("https://api.unfoldingword.org/");
+         root = RootDirectory.CreateInstance(baseURL);
       }
 
       internal WebPoller(bool isForTestingOnly) : this()
@@ -30,7 +30,7 @@ namespace USFMreader.GeneralizedFileSystem
          this.isForTesting = isForTestingOnly;
       }
 
-      public void CrawlUnfoldingWordForUpdates()
+      public void BuildDirectory(DirectoryItem directory, String url)
       {
          // Code copied and adapted from 
          // http://stackoverflow.com/questions/124492/c-sharp-httpwebrequest-command-to-get-directory-listing
@@ -45,12 +45,17 @@ namespace USFMreader.GeneralizedFileSystem
                Regex itemNameRegex = new Regex("<a href=\".*\">(?<name>.*)</a>");
                MatchCollection itemNames = itemNameRegex.Matches(html);
                foreach (Match match in itemNames)
-                     Console.WriteLine(match.Groups["name"]);
-               
+                  Console.WriteLine(match.Groups["name"]);
+
                foreach (var line in lines)
                   Console.WriteLine(line);
             }
          }
+      }
+
+      public void CrawlUnfoldingWordForUpdates()
+      {
+         BuildDirectory(null, String.Empty);
       }
 
       private List<string> parseToLines(StreamReader reader)
