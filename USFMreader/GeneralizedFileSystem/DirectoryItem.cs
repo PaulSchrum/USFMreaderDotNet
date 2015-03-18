@@ -9,9 +9,15 @@ namespace USFMreader.GeneralizedFileSystem
    public class DirectoryItem : FileSystemItem
    {
       protected List<FileSystemItem> children { get; set; }
-      public DirectoryItem()
+      public DirectoryItem() : base()
       {
          children = new List<FileSystemItem>();
+      }
+
+      public DirectoryItem(String name, DateTime timeStamp)
+      {
+         Name = name;
+         TimeStamp = timeStamp;
       }
 
       public override List<FileSystemItem> GetChildren()
@@ -22,6 +28,11 @@ namespace USFMreader.GeneralizedFileSystem
       public override void AddChild(FileSystemItem fileSystemItem)
       {
          children.Add(fileSystemItem);
+      }
+
+      public override string ToString()
+      {
+         return this.Name;
       }
    }
 }

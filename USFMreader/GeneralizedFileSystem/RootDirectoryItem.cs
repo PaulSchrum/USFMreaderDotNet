@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,22 +7,23 @@ using System.Threading.Tasks;
 
 namespace USFMreader.GeneralizedFileSystem
 {
-   public class RootDirectory : DirectoryItem
+   public class RootDirectoryItem : DirectoryItem
    {
       public String path { get; protected set; }
 
-      public static RootDirectory CreateInstance(String rootDir)
+      public static RootDirectoryItem CreateInstance(String rootDir)
       {
-         RootDirectory newRootDir = new RootDirectory();
+         RootDirectoryItem newRootDir = new RootDirectoryItem();
          newRootDir.path = rootDir;
          newRootDir.Parent = null;
          newRootDir.Name = String.Empty;
          return newRootDir;
       }
 
-      public override string GetPathAndFileName(StringBuilder pathFName)
+      public override string GetPathAndFileName()
       {
          return path;
       }
+
    }
 }

@@ -8,6 +8,13 @@ namespace USFMreader.GeneralizedFileSystem
 {
    class FileItem : FileSystemItem
    {
+      public FileItem(String name, DateTime timeStamp, String filesize) : base()
+      {
+         this.Name = name;
+         this.TimeStamp = timeStamp;
+         this.FileSize = filesize;
+      }
+
       public override List<FileSystemItem> GetChildren()
       {
          return new List<FileSystemItem>();

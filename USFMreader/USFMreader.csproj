@@ -48,7 +48,7 @@
     <Compile Include="GeneralizedFileSystem\DirectoryItem.cs" />
     <Compile Include="GeneralizedFileSystem\FileItem.cs" />
     <Compile Include="GeneralizedFileSystem\FileSystemItem.cs" />
-    <Compile Include="GeneralizedFileSystem\RootDirectory.cs" />
+    <Compile Include="GeneralizedFileSystem\RootDirectoryItem.cs" />
     <Compile Include="ITextContainer.cs" />
     <Compile Include="Reader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
