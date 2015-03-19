@@ -16,6 +16,7 @@ namespace USFMreader.GeneralizedFileSystem
       public String baseURL { get; private set; }
       public String testURL { get; private set; }
       public RootDirectoryItem root { get; set; }
+      protected List<DirectoryItem> biblesOnServer { get; set; }
       protected Dictionary<int, List<String>> ignoreDirectoryNames { get; set; }
       internal bool isForTesting { get; set; }
       
@@ -26,6 +27,7 @@ namespace USFMreader.GeneralizedFileSystem
          testURL = "https://api.unfoldingword.org/avd/txt/1/avd-ar/";
          root = RootDirectoryItem.CreateInstance(baseURL);
          setupIgnoreDirectoryNames();
+         biblesOnServer = new List<DirectoryItem>();
       }
 
       private void setupIgnoreDirectoryNames()
@@ -46,7 +48,8 @@ namespace USFMreader.GeneralizedFileSystem
          // Code copied and adapted from 
          // http://stackoverflow.com/questions/124492/c-sharp-httpwebrequest-command-to-get-directory-listing
          // answer by smink.
-         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(directory.GetPathAndFileName());
+         var url = directory.GetPathAndFileName();
+         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
          using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
          {
             using (StreamReader reader = new StreamReader(response.GetResponseStream()))
@@ -96,6 +99,22 @@ namespace USFMreader.GeneralizedFileSystem
       public void CrawlUnfoldingWordForUpdates()
       {
          BuildDirectory(this.root, 0);
+
+         var v = this.root.children;
+         IEnumerable<DirectoryItem> allDirectories = 
+            Flatten( this.root.GetChildDirectories());
+         
+         foreach(var dir in allDirectories)
+         {
+            dir.determineWhetherThisIsABible();
+         }
+      }
+
+      private IEnumerable<DirectoryItem> Flatten(IEnumerable<DirectoryItem> e)
+      {
+         IEnumerable<DirectoryItem> v = e
+            .SelectMany(c => Flatten(c.GetChildDirectories())).Concat(e);
+         return v;
       }
 
       private List<string> parseToLines(StreamReader reader)

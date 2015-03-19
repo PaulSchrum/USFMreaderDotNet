@@ -24,5 +24,10 @@ namespace USFMreader.GeneralizedFileSystem
       {
          throw new Exception("Can not add child to type FileItem.");
       }
+
+      public override string ToString()
+      {
+         return "File: " + this.Name;
+      }
    }
 }

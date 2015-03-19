@@ -20,7 +20,7 @@ namespace USFMreader.GeneralizedFileSystem
 
       public virtual String GetPathAndFileName()
       {
-         return this.Parent.GetPathAndFileName() + @"/" + this.Name;
+         return this.Parent.GetPathAndFileName() +  this.Name;
       }
 
       public static FileSystemItem CreateFromUnfoldingWorldServerString(String serverString)
