@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using USFMreader;
 using USFMreader.GeneralizedFileSystem;
+using System.Collections.Generic;
 
 namespace ReaderTests
 {
@@ -103,6 +104,27 @@ namespace ReaderTests
       {
          preliminaries();
          Assert.IsNotNull(arabicBible);
+      }
+
+      //[TestMethod]
+      public void AVeryUsefulAndInterestingMethod()
+      {  // adapted from the famous
+         // http://stackoverflow.com/questions/105372/enumerate-an-enum
+         preliminaries();
+         Dictionary<String, String> specialFolders = new Dictionary<string, string>();
+         foreach(var special in Enum.GetValues(typeof(System.Environment.SpecialFolder)))
+         {
+            String name;
+            String enum_;
+            try
+            {
+               name = Enum.GetName(typeof(System.Environment.SpecialFolder), special);
+               enum_ = Environment.GetFolderPath((System.Environment.SpecialFolder)special);
+               specialFolders.Add(name, enum_);
+            }
+            catch (ArgumentException ex) { }
+            catch (Exception e) { }
+         }
       }
 
       [TestMethod]
