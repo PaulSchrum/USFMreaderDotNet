@@ -5,11 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#if Win8_Debug || Win8_Release
+using System.IO;
+#endif
+
 namespace USFMreader.GeneralizedFileSystem
 {
    public class RootDirectoryItem : DirectoryItem
    {
       public String path { get; protected set; }
+
+      public static RootDirectoryItem CreateInstanceAppDataStorage()
+      {
+         RootDirectoryItem returnValue;
+         #if Win8_Debug || Win8_Release
+            returnValue = getRootDirectory_Win8();
+         #else
+            returnValue = null;
+         #endif
+            return returnValue;
+      }
 
       public static RootDirectoryItem CreateInstance(String rootDir)
       {
@@ -24,6 +39,17 @@ namespace USFMreader.GeneralizedFileSystem
       {
          return path;
       }
+
+#if Win8_Debug || Win8_Release
+      private static RootDirectoryItem getRootDirectory_Win8()
+      {
+         var parent3 = Directory.GetParent(System.IO.Directory.GetCurrentDirectory());
+         var parent2 = Directory.GetParent(parent3.FullName);
+         var dir = Directory.GetParent(parent2.FullName).FullName;
+         RootDirectoryItem returnValue = CreateInstance(dir);
+         return returnValue;
+      }
+#endif
 
    }
 }

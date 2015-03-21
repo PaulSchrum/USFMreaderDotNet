@@ -11,6 +11,7 @@ namespace ReaderTests
    [TestClass]
    public class UnitTest1
    {
+      private Reader BibleReader { get; set; }
       private String Basedir { get; set; }
       private WorkingText englishBibleLiteralTranslation { get; set; }
       private WorkingText arabicBible { get; set; }
@@ -20,6 +21,7 @@ namespace ReaderTests
          if (null != Basedir)
             return;
 
+         BibleReader = new Reader();
          var parent3 = Directory.GetParent(System.IO.Directory.GetCurrentDirectory());
          var parent2 = Directory.GetParent(parent3.FullName);
          Basedir = Directory.GetParent(parent2.FullName).FullName;
@@ -33,6 +35,18 @@ namespace ReaderTests
 
          englishBibleLiteralTranslation = new WorkingText(englishLiteralDirectory.ToString());
          arabicBible = new WorkingText(arabicDirectory.ToString());
+      }
+
+      [TestMethod]
+      public void Reader_HasCorrectRootPath()
+      {
+         preliminaries();
+         Assert.IsNotNull(BibleReader);
+         Assert.IsNotNull(BibleReader.AppDataDirectory);
+         Assert.AreEqual(
+            expected: "C:\\SourceModules\\USFMreaderDotNet",
+            actual: BibleReader.AppDataDirectory.path
+            );
       }
 
       [TestMethod]
