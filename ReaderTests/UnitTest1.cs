@@ -28,10 +28,10 @@ namespace ReaderTests
 
          StringBuilder englishLiteralDirectory = new StringBuilder(Basedir);
          englishLiteralDirectory
-            .Append(@"\TestTexts\Bibles\English\UnfoldingWord_LiteralBible");
+            .Append(@"\TestTexts\EstablishedAppDirectory\Bibles\English\UnfoldingWord_LiteralBible");
          StringBuilder arabicDirectory = new StringBuilder(Basedir);
          arabicDirectory
-            .Append(@"\TestTexts\Bibles\Arabic\UnfoldingWord_ar");
+            .Append(@"\TestTexts\EstablishedAppDirectory\Bibles\Arabic\UnfoldingWord_ar");
 
          englishBibleLiteralTranslation = new WorkingText(englishLiteralDirectory.ToString());
          arabicBible = new WorkingText(arabicDirectory.ToString());
@@ -44,7 +44,7 @@ namespace ReaderTests
          Assert.IsNotNull(BibleReader);
          Assert.IsNotNull(BibleReader.AppDataDirectory);
          Assert.AreEqual(
-            expected: "C:\\SourceModules\\USFMreaderDotNet",
+            expected: "C:\\SourceModules\\USFMreaderDotNet\\EstablishedAppDirectory",
             actual: BibleReader.AppDataDirectory.path
             );
       }

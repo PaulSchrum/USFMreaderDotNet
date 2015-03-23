@@ -15,6 +15,10 @@ namespace USFMreader.GeneralizedFileSystem
    {
       public String path { get; protected set; }
 
+#if Win8_Debug || Win8_Release
+      internal static bool TestEstablishedAppDirectory=true;
+#endif
+
       public static RootDirectoryItem CreateInstanceAppDataStorage()
       {
          RootDirectoryItem returnValue;
@@ -46,6 +50,12 @@ namespace USFMreader.GeneralizedFileSystem
          var parent3 = Directory.GetParent(System.IO.Directory.GetCurrentDirectory());
          var parent2 = Directory.GetParent(parent3.FullName);
          var dir = Directory.GetParent(parent2.FullName).FullName;
+
+         if (true == TestEstablishedAppDirectory)
+            dir = dir + @"\EstablishedAppDirectory";
+         else
+            dir = dir + @"\NewAppDirectory";
+
          RootDirectoryItem returnValue = CreateInstance(dir);
          return returnValue;
       }
