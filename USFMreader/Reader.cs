@@ -10,11 +10,9 @@ namespace USFMreader
    public class Reader
    {
       public RootDirectoryItem AppDataDirectory { get; protected set; }
-      public Dictionary<String, WorkingText> allWorkingTexts { get; protected set; }
 
       public Reader()
       {
-         allWorkingTexts = new Dictionary<string, WorkingText>();
          AppDataDirectory = RootDirectoryItem.CreateInstanceAppDataStorage();
       }
 

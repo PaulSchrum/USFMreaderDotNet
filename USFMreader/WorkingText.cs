@@ -21,7 +21,7 @@ namespace USFMreader
       public String Language { get; private set; }
       public String NameTranslation { get; private set; }
       public String Slug { get; private set; }
-      public TranslationStatus status { get; private set; }
+      public TranslationStatus TranslationStatus { get; private set; }
 
       public WorkingText()
       {
@@ -139,21 +139,21 @@ namespace USFMreader
          this.NameTranslation = (String)status_json["name"];
          this.Language = (String)status_json["lang"];
          this.Slug = (String)status_json["slug"];
-         this.status = new TranslationStatus();
-         this.status.CheckingEntity = (String) status_json["status"]["checking_entity"];
-         this.status.CheckingLevel = int.Parse(
+         this.TranslationStatus = new TranslationStatus();
+         this.TranslationStatus.CheckingEntity = (String) status_json["status"]["checking_entity"];
+         this.TranslationStatus.CheckingLevel = int.Parse(
             (String)status_json["status"]["checking_level"],
             CultureInfo.InvariantCulture);
-         this.status.Comments = (String)status_json["status"]["comments"];
-         this.status.Contributors = (String)status_json["status"]["contributors"];
-         this.status.PublishDate =
+         this.TranslationStatus.Comments = (String)status_json["status"]["comments"];
+         this.TranslationStatus.Contributors = (String)status_json["status"]["contributors"];
+         this.TranslationStatus.PublishDate =
                      DateTime.ParseExact((String)status_json["status"]["publish_date"],
                            "yyyyMMdd",
                            CultureInfo.InvariantCulture,
                            DateTimeStyles.None);
-         this.status.SourceText = (String)status_json["status"]["source_text"];
-         this.status.SourceTextVersion = (String)status_json["status"]["source_text_version"];
-         this.status.Version = (String)status_json["status"]["version"];
+         this.TranslationStatus.SourceText = (String)status_json["status"]["source_text"];
+         this.TranslationStatus.SourceTextVersion = (String)status_json["status"]["source_text_version"];
+         this.TranslationStatus.Version = (String)status_json["status"]["version"];
 
          // todo: parse status_json["books_published"] 
          // not doing this now because no essential information appears
